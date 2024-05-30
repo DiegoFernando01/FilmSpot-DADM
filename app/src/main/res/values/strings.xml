@@ -3,4 +3,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start_continue_buttom">Continue buttom</string>
     <string name="filmspot_subtitle">Lights, camera, rate!</string>
+    <string name="bt_signin">Sign in</string>
+    <string name="bt_signup">I´m new here</string>
 </resources>
