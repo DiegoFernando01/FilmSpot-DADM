@@ -1,7 +1,6 @@
 package com.example.filmspot.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,7 @@ class SignInFragment : Fragment() {
         controllers()
     }
 
-    private fun controllers() {
+    private fun controllers() { // Controlador de eventos y escuchas
         binding.btSignup.setOnClickListener {
             findNavController().navigate(R.id.action_SignInFragment_to_SignUpFragment)
         }
@@ -42,7 +41,7 @@ class SignInFragment : Fragment() {
             login()
         }
         binding.btRecoverypassword.setOnClickListener {
-
+            resetpassword()
         }
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -54,30 +53,49 @@ class SignInFragment : Fragment() {
         )
     }
 
-    private fun login() {
+    private fun login() { // Método de inicio de sesión
         if (binding.textInputEmail.text!!.isNotEmpty() && binding.textInputPassword.text!!.isNotEmpty()) {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(
                 binding.textInputEmail.text.toString(),
                 binding.textInputPassword.text.toString()
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("Salidas", "signInWithEmail:success")
                     Toast.makeText(
                         requireContext(),
                         "Successful authentication",
-                        Toast.LENGTH_SHORT,
+                        Toast.LENGTH_LONG,
                     ).show()
+                    // Agregar siguiente vista
                 } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("Salidas", "signInWithEmail:failure")
                     Toast.makeText(
                         requireContext(),
                         "Authentication failed.",
-                        Toast.LENGTH_SHORT,
+                        Toast.LENGTH_LONG,
                     ).show()
                 }
             }
+        }
+    }
+
+    private fun resetpassword() { // Método para actualizar la contraseña
+        if (binding.textInputEmail.text!!.isNotEmpty()) {
+            FirebaseAuth.getInstance()
+                .sendPasswordResetEmail(binding.textInputEmail.text.toString())
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Reset password email send.",
+                            Toast.LENGTH_LONG,
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Incorrect email.",
+                            Toast.LENGTH_LONG,
+                        ).show()
+                    }
+                }
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.filmspot.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,7 @@ class SignUpFragment : Fragment() {
         controllers()
     }
 
-    private fun controllers() {
+    private fun controllers() { // Controlador de eventos y escuchas
         binding.btSignup.setOnClickListener {
             register()
         }
@@ -51,25 +50,24 @@ class SignUpFragment : Fragment() {
         )
     }
 
-    private fun register() {
+    private fun register() { // Método de registro con correo y contraseña
         if (binding.textInputEmail.text!!.isNotEmpty() && binding.textInputPassword.text!!.isNotEmpty()) {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                 binding.textInputEmail.text.toString(),
                 binding.textInputPassword.text.toString()
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Log.d("Salidas", "createUserWithEmail:success")
                     Toast.makeText(
                         requireContext(),
-                        "Usuario creado con éxito.",
-                        Toast.LENGTH_SHORT,
+                        "User created successfully.",
+                        Toast.LENGTH_LONG,
                     ).show()
+                    // Agregar siguiente vista
                 } else {
-                    Log.w("Error", "createUserWithEmail:failure")
                     Toast.makeText(
                         requireContext(),
-                        "Registro de usuario fallido.",
-                        Toast.LENGTH_SHORT,
+                        "User registration failed.",
+                        Toast.LENGTH_LONG,
                     ).show()
                 }
             }
