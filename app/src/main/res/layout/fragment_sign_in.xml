@@ -33,15 +33,15 @@
             android:text="Don't have an account?"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="@+id/bt_signup"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_signup" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bt_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
