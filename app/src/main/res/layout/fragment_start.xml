@@ -54,7 +54,6 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:importantForAccessibility="no"
             android:src="@drawable/baseline_airplay_24"
             app:layout_constraintBottom_toTopOf="@+id/tv_app_name"
