@@ -6,20 +6,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.filmspot.R
+import com.example.filmspot.databinding.FragmentInitBinding
+import com.example.filmspot.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
+    private var _binding: FragmentSignInBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        _binding = FragmentSignInBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated( // Operaciones sobre la vista después su creación
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(view, savedInstanceState)
+        controllers()
+    }
+
+    private fun controllers() {
+        binding.btSignup.setOnClickListener() {
+
+        }
+        binding.btSignin.setOnClickListener() {
+
+        }
+        binding.btRecoverypassword.setOnClickListener() {
+
+        }
     }
 }

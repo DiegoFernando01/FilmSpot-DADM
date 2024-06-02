@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentInitBinding
+import com.example.filmspot.databinding.FragmentStartBinding
 
 class InitFragment : Fragment() {
 
@@ -17,8 +18,9 @@ class InitFragment : Fragment() {
     override fun onCreateView( // Operaciones sobre la vista durante su creación
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_init, container, false)
+    ): View {
+        _binding = FragmentInitBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated( // Operaciones sobre la vista después su creación
@@ -30,11 +32,11 @@ class InitFragment : Fragment() {
     }
 
     private fun controllers() {
-        binding.btSignin.setOnClickListener() {
-            findNavController().navigate(R.id.action_InitFragment_to_SignInFragment)
-        }
         binding.btSignup.setOnClickListener() {
             findNavController().navigate(R.id.action_InitFragment_to_SignUpFragment)
+        }
+        binding.btSignin.setOnClickListener() {
+            findNavController().navigate(R.id.action_InitFragment_to_SignInFragment)
         }
     }
 
