@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentStartBinding
@@ -34,6 +35,14 @@ class StartFragment : Fragment() { // Fragmento inicial
         binding.imgbtContinue.setOnClickListener() {
             findNavController().navigate(R.id.action_StartFragment_to_InitFragment)
         }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            }
+        )
     }
 
 }

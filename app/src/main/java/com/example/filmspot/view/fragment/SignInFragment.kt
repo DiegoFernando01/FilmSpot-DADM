@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.navigation.fragment.findNavController
 import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentInitBinding
 import com.example.filmspot.databinding.FragmentSignInBinding
@@ -17,7 +20,7 @@ class SignInFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,7 +35,7 @@ class SignInFragment : Fragment() {
 
     private fun controllers() {
         binding.btSignup.setOnClickListener() {
-
+            findNavController().navigate(R.id.action_SignInFragment_to_SignUpFragment)
         }
         binding.btSignin.setOnClickListener() {
 
@@ -40,5 +43,13 @@ class SignInFragment : Fragment() {
         binding.btRecoverypassword.setOnClickListener() {
 
         }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_SignInFragment_to_InitFragment)
+                }
+            }
+        )
     }
 }
