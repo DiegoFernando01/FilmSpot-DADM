@@ -32,12 +32,8 @@ class StartFragment : Fragment() { // Fragmento inicial
 
     private fun controllers() {
         binding.imgbtContinue.setOnClickListener() {
-            startLogin()
+            findNavController().navigate(R.id.action_StartFragment_to_InitFragment)
         }
-    }
-
-    private fun startLogin() { // Función para ir del start login al init login
-        findNavController().navigate(R.id.action_StartFragment_to_InitFragment)
     }
 
 }
