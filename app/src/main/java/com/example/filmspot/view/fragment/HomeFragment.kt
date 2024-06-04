@@ -1,88 +1,63 @@
-package com.example.filmspot.view.fragment
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.filmspot.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.filmspot.databinding.FragmentHomeBinding  // Asegúrate de usar el nombre correcto de tu archivo de binding
+import com.example.filmspot.adapters.ReviewsAdapter
+import com.example.filmspot.adapters.WatchListAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-    class ReviewsAdapter(private val reviewsList: List<Review>) : RecyclerView.Adapter<ReviewsAdapter.ReviewViewHolder>() {
-        // Limitar la cantidad de items a mostrar a 4
-        private val maxItemsToShow = 4
+    private lateinit var reviewsAdapter: ReviewsAdapter
+    private lateinit var watchListAdapter: WatchListAdapter
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_review, parent, false)
-            return ReviewViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-            holder.bind(reviewsList[position])
-        }
-
-        override fun getItemCount(): Int {
-            // Retornar el mínimo entre el tamaño total de la lista y 4
-            return min(reviewsList.size, maxItemsToShow)
-        }
-
-        class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            fun bind(review: Review) {
-                // Configura los datos del item aquí
-            }
-        }
-    }
-
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // Asegúrate de implementar ReviewsAdapter y WatchListAdapter correctamente
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerViews()
+        setupListeners()
+    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupRecyclerViews() {
+        reviewsAdapter = ReviewsAdapter(listOf(/* sample data */))
+        watchListAdapter = WatchListAdapter(listOf(/* sample data */))
+
+        binding.reviewsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = reviewsAdapter
+        }
+
+        binding.watchListRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = watchListAdapter
+        }
+    }
+
+    private fun setupListeners() {
+        binding.moreActivityText.setOnClickListener {
+            // Handle the click event, possibly navigating to another fragment
+        }
+        binding.exploreButton.setOnClickListener {
+            // Handle the click event
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
