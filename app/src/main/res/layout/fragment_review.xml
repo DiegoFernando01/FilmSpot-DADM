@@ -8,80 +8,62 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/reviewsTitle"
+        android:id="@+id/reviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:drawableStart="@drawable/ic_claqueta"
         android:drawablePadding="8dp"
-        android:layout_marginTop="270dp"
+        android:gravity="center_horizontal|top"
         android:text="@string/reviews"
         android:textColor="@color/filmspot_icons"
         android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reviewsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/reviewsTitle"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- More activity section with divider lines -->
-
-    <TextView
-        android:id="@+id/moreActivityText"
+    <ImageButton
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="4dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/more_activity"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView" />
+        app:layout_constraintTop_toTopOf="@id/reviewTitle"
+        app:layout_constraintBottom_toBottomOf="@id/reviewTitle" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="7dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/moreActivityText" />
-
-    <!-- Botón 'Let's Explore' -->
-    <Button
-        android:id="@+id/exploreButton"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/watchListRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:background="@drawable/shape_button"
-        android:text="@string/bt_lets_rate"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewTitle" />
+
+    <Button
+        android:id="@+id/exploreButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lets_explore"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/shape_button"
+        android:backgroundTint="@color/filmspot_icons"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.05" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
