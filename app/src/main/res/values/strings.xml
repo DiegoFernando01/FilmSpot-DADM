@@ -22,4 +22,8 @@
     <string name="more_activity">More activity</string>
     <string name="watchlist">Watchlist</string>
     <string name="details">Details</string>
+    <string name="lets_explore">Let´s explore</string>
+    <string name="explore">Explore</string>
+    <string name="find_films">Find Films</string>
+    find_films
 </resources>
