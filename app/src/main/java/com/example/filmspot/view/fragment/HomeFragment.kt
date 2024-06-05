@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmspot.databinding.FragmentHomeBinding  // Asegúrate de usar el nombre correcto de tu archivo de binding
-import com.example.filmspot.adapters.ReviewsAdapter
-import com.example.filmspot.adapters.WatchListAdapter
+import com.example.filmspot.adapter.ReviewsAdapter
+import com.example.filmspot.adapter.WatchListAdapter
 
 
 class HomeFragment : Fragment() {
