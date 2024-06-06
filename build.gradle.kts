@@ -2,6 +2,7 @@
 allprojects {
     repositories {
         google()
+        mavenCentral()
     }
 }
 
@@ -11,6 +12,5 @@ plugins {
     // Add the dependency for the Google services Gradle plugin
     id("com.google.gms.google-services") version "4.4.2" apply false
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
-    id ("com.android.application' version '7.4.1' apply false")
-    id ("dagger.hilt.android.plugin' version '2.38.1' apply false")
+    //id("com.android.application") version "8.4.0" apply false
 }
