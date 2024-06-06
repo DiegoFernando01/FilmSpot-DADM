@@ -1,9 +1,11 @@
 package com.example.filmspot.view.adapter
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmspot.R
+import com.example.filmspot.model.WatchItem
 
 class WatchListAdapter(private val watchList: List<WatchItem>) : RecyclerView.Adapter<WatchListAdapter.WatchViewHolder>() {
     class WatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
