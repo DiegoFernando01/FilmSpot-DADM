@@ -62,6 +62,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     // Add the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth")
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+
 
     // Lifecycle
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
@@ -75,6 +77,9 @@ dependencies {
     // KSP dependencies
     //ksp("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.0")
 
+    // Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 }
 
 
