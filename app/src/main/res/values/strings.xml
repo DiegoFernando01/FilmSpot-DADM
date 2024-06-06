@@ -25,5 +25,6 @@
     <string name="lets_explore">Let´s explore</string>
     <string name="explore">Explore</string>
     <string name="find_films">Find Films</string>
+    <string name="descriptive_favoriteMovie">favorite movie image</string>
     find_films
 </resources>

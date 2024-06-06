@@ -9,6 +9,14 @@ import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentHomeBinding  // Asegúrate de usar el nombre correcto de tu archivo de binding
 import com.example.filmspot.view.adapter.ReviewsAdapter
 import com.example.filmspot.view.adapter.WatchListAdapter
+import android.widget.TextView
+import android.widget.ImageView
+import android.util.Log
+import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -71,4 +79,44 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    class UserProfileFragment : Fragment() {
+
+        private lateinit var db: FirebaseFirestore
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            db = Firebase.firestore
+        }
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+
+            // Suponiendo que tienes un 'userId' disponible aquí
+            val userId = "someUserId"
+
+            db.collection("users").document(userId).get().addOnSuccessListener { document ->
+                if (document != null) {
+                    val usuario = document.toObject(Usuario::class.java)  // Asegúrate de tener una clase 'Usuario' que coincida con la estructura en Firestore
+                    updateUI(usuario)
+                } else {
+                    Log.d("Firestore", "No such document")
+                }
+            }.addOnFailureListener { exception ->
+                Log.d("Firestore", "get failed with ", exception)
+            }
+        }
+
+        private fun updateUI(usuario: Usuario?) {
+            // Verificar si el usuario no es null
+            usuario?.let {
+                binding.userName.text = it.nombre
+                binding.favoriteMovieNameYear.text = "${it.peliculaFavorita.titulo} (${it.peliculaFavorita.año})"
+                Glide.with(this).load(it.peliculaFavorita.urlImagen).into(binding.favoriteMovieImage)
+                Glide.with(this).load(it.urlImagenPerfil).into(binding.userProfileImage)
+            }
+        }
+    }
+
+
 }
