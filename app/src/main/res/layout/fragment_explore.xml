@@ -27,16 +27,15 @@
 
     <EditText
         android:id="@+id/searchBox"
-        android:layout_width="380dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rectangle_3"
         android:drawablePadding="10dp"
         android:hint="@string/find_films"
         android:padding="12dp"
-        android:layout_marginStart="7dp"
-        android:textColorHint="#80000000"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exploreTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exploreRecyclerView"
@@ -44,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBox" />
 
     <LinearLayout
@@ -63,8 +64,8 @@
             android:layout_height="60dp"
             android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:tint="#000000"
-            android:src="@drawable/ic_heart" />
+            android:contentDescription="@string/description_heart"
+            android:src="@drawable/ic_heartbl" />
 
         <ImageButton
             android:id="@+id/homeButton"
@@ -72,8 +73,8 @@
             android:layout_height="60dp"
             android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:tint="#000000"
-            android:src="@drawable/ic_home" />
+            android:contentDescription="@string/description_home"
+            android:src="@drawable/ic_homebl" />
 
         <ImageButton
             android:id="@+id/claquetaButton"
@@ -81,8 +82,8 @@
             android:layout_height="60dp"
             android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:tint="#000000"
-            android:src="@drawable/ic_claqueta" />
+            android:contentDescription="@string/description_claqueta"
+            android:src="@drawable/ic_claquetabl" />
     </LinearLayout>
 
 

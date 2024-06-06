@@ -28,7 +28,7 @@
             android:background="@drawable/shape_profile_image"
             android:contentDescription="@string/profile_label"
             android:scaleType="centerCrop"
-            android:src="@drawable/user_profile_image" />
+            tools:src="@tools:sample/avatars" />
 
         <!-- Nombre del usuario dentro del contenedor naranja -->
         <TextView
@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="5dp"
-            android:text="@string/user_name"
             android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:text="@string/user_name" />
     </FrameLayout>
 
     <!-- Contenedor de la Película Favorita -->
