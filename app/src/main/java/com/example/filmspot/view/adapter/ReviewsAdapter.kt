@@ -1,9 +1,11 @@
 package com.example.filmspot.view.adapter
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmspot.R
+import com.example.filmspot.model.Review
 
 class ReviewsAdapter(private val reviewsList: List<Review>) : RecyclerView.Adapter<ReviewsAdapter.ReviewViewHolder>() {
     class ReviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
