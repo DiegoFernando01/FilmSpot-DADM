@@ -38,6 +38,9 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
