@@ -13,5 +13,6 @@ data class Movie(
     val description: String,
     @SerializedName("release_date") val releaseDate: String,
     val rating: Double,
-    @SerializedName("poster_path") val posterPath: String
+    @SerializedName("poster_path") val posterPath: String,
+    val userRating: Int
 )
