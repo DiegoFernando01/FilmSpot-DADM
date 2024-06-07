@@ -25,5 +25,8 @@
     <string name="lets_explore">Let´s explore</string>
     <string name="explore">Explore</string>
     <string name="find_films">Find Films</string>
-    find_films
+    <string name="descriptive_favoriteMovie">favorite movie image</string>
+    <string name="description_claqueta">Icono de claqueta</string>
+    <string name="description_home">Icono de Casa</string>
+    <string name="description_heart">Icono de Corazón</string>
 </resources>

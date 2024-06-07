@@ -28,7 +28,7 @@
             android:background="@drawable/shape_profile_image"
             android:contentDescription="@string/profile_label"
             android:scaleType="centerCrop"
-            android:src="@drawable/user_profile_image" />
+            tools:src="@tools:sample/avatars" />
 
         <!-- Nombre del usuario dentro del contenedor naranja -->
         <TextView
@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="5dp"
-            android:text="@string/user_name"
             android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:text="@string/user_name" />
     </FrameLayout>
 
     <!-- Contenedor de la Película Favorita -->
@@ -49,6 +49,7 @@
         android:layout_width="203dp"
         android:layout_height="127dp"
         android:layout_marginStart="22dp"
+        android:contentDescription="@string/descriptive_favoriteMovie"
         android:background="@drawable/rounded_container"
         app:layout_constraintStart_toEndOf="@id/profileContainer"
         app:layout_constraintTop_toTopOf="@id/profileContainer"> <!-- Asegúrate que este drawable esté correctamente definido con color #FE522E y bordes de 20dp -->
@@ -95,14 +96,18 @@
         android:id="@+id/reviewsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="200dp"
         android:drawableStart="@drawable/ic_claqueta"
         android:drawablePadding="8dp"
         android:text="@string/reviews"
         android:textColor="@color/filmspot_icons"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="190dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewsRecyclerView"
@@ -121,16 +126,19 @@
         android:id="@+id/moreActivityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="88dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:minWidth="22dp"
+        android:minHeight="22dp"
+        android:padding="13dp"
         android:text="@string/more_activity"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
 
@@ -138,7 +146,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="-15dp"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +156,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-15dp"
         android:layout_marginEnd="7dp"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -164,14 +172,18 @@
         android:id="@+id/watchListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="156dp"
         android:drawableStart="@drawable/ic_heart"
         android:drawablePadding="8dp"
         android:text="@string/watchlist"
         android:textColor="@color/filmspot_icons"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="345dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/watchListRecyclerView"
@@ -188,11 +200,14 @@
         android:id="@+id/DetailsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="88dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:minWidth="22dp"
+        android:minHeight="22dp"
+        android:padding="13dp"
         android:text="@string/details"
         android:textColor="@android:color/white"
         android:textSize="16sp"
@@ -232,7 +247,7 @@
         android:text="@string/lets_explore"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/shape_button"
         android:backgroundTint="@color/filmspot_icons"
         android:padding="12dp"
