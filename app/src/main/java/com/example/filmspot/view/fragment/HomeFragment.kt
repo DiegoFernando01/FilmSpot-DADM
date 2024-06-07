@@ -1,3 +1,5 @@
+package com.example.filmspot.view.fragment
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +18,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -111,12 +112,13 @@ class HomeFragment : Fragment() {
             // Verificar si el usuario no es null
             usuario?.let {
                 binding.userName.text = it.nombre
-                binding.favoriteMovieNameYear.text = "${it.peliculaFavorita.titulo} (${it.peliculaFavorita.año})"
-                Glide.with(this).load(it.peliculaFavorita.urlImagen).into(binding.favoriteMovieImage)
+                binding.favoriteMovieNameYear.text =
+                    "${it.peliculaFavorita.titulo} (${it.peliculaFavorita.año})"
+                Glide.with(this).load(it.peliculaFavorita.urlImagen)
+                    .into(binding.favoriteMovieImage)
                 Glide.with(this).load(it.urlImagenPerfil).into(binding.userProfileImage)
             }
         }
     }
-
 
 }

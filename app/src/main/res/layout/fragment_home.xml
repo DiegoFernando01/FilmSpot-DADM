@@ -26,9 +26,9 @@
             android:layout_height="84dp"
             android:layout_gravity="center"
             android:background="@drawable/shape_profile_image"
-            android:contentDescription="@string/profile_label"
+            android:contentDescription=""
             android:scaleType="centerCrop"
-            android:src="@drawable/user_profile_image" />
+            tools:src="@tools:sample/avatars" />
 
         <!-- Nombre del usuario dentro del contenedor naranja -->
         <TextView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="5dp"
-            android:text="@string/user_name"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="12sp" />
     </FrameLayout>
@@ -49,8 +49,8 @@
         android:layout_width="203dp"
         android:layout_height="127dp"
         android:layout_marginStart="22dp"
-        android:contentDescription="@string/descriptive_favoriteMovie"
         android:background="@drawable/rounded_container"
+        android:contentDescription="@string/descriptive_favoriteMovie"
         app:layout_constraintStart_toEndOf="@id/profileContainer"
         app:layout_constraintTop_toTopOf="@id/profileContainer"> <!-- Asegúrate que este drawable esté correctamente definido con color #FE522E y bordes de 20dp -->
 
@@ -76,7 +76,7 @@
             android:layout_marginTop="24dp"
             android:contentDescription="@string/favorite_movie"
             android:scaleType="fitCenter"
-            android:src="@drawable/favorite_movie_image" />
+            android:src="" />
 
         <!-- Nombre y año de la película -->
         <TextView
@@ -86,7 +86,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/movie_name_year"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="12sp" />
     </FrameLayout>
@@ -244,17 +244,17 @@
         android:id="@+id/exploreButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/lets_explore"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/shape_button"
         android:backgroundTint="@color/filmspot_icons"
         android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/lets_explore"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
