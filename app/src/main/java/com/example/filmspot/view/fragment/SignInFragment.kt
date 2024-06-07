@@ -65,7 +65,7 @@ class SignInFragment : Fragment() {
                         "Successful authentication",
                         Toast.LENGTH_LONG,
                     ).show()
-                    // Agregar siguiente vista
+                    //findNavController().navigate()
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -96,6 +96,12 @@ class SignInFragment : Fragment() {
                         ).show()
                     }
                 }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Enter your email.",
+                Toast.LENGTH_LONG,
+            ).show()
         }
     }
 }

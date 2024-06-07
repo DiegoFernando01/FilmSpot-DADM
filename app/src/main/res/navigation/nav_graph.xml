@@ -55,6 +55,22 @@
         <action
             android:id="@+id/action_SignInFragment_to_InitFragment"
             app:destination="@id/InitFragment" />
+        <action
+            android:id="@+id/action_SignInFragment_to_CreateFragment"
+            app:destination="@+id/CreateFragment">
+            <argument
+                android:name="email"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/CreateFragment"
+        android:name="com.example.filmspot.view.fragment.CreateFragment"
+        android:label="Create Fragment"
+        tools:layout="@layout/fragment_create">
+        <argument
+            android:name="email"
+            app:argType="string" />
     </fragment>
 
 </navigation>
