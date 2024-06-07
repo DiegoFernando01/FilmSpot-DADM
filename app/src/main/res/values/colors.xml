@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="filmspot_background">#FF5722</color>
+    <color name="filmspot_icons">#FE522E</color>
 </resources>

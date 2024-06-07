@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -37,6 +38,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -52,8 +54,35 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     // Import the Firebase BoM
+    //Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     // Add the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth")
+    implementation ("com.google.firebase:firebase-firestore-ktx")
+
+
+    // Lifecycle
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+
+    // Dagger
+    //implementation("com.google.dagger:dagger-compiler:2.51.1")
+
+    // Kotlin
+
+    // KSP dependencies
+    //ksp("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.0")
+
+    // Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+
+    implementation("com.google.code.gson:gson:2.8.8")
+}
+
+
+kotlin {
+    sourceSets["main"].kotlin.srcDir("build/generated/ksp/main/kotlin")
 }

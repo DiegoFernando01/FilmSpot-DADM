@@ -11,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpFragment : Fragment() {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,19 +52,39 @@ class SignUpFragment : Fragment() {
         )
     }
 
-    private fun register() { // Método de registro con correo y contraseña
+    private fun register() {
+        // Método de registro con correo y contraseña
         if (binding.textInputEmail.text!!.isNotEmpty() && binding.textInputPassword.text!!.isNotEmpty()) {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                 binding.textInputEmail.text.toString(),
                 binding.textInputPassword.text.toString()
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        "User created successfully.",
-                        Toast.LENGTH_LONG,
-                    ).show()
-                    // Agregar siguiente vista
+                    val user = FirebaseAuth.getInstance().currentUser
+                    user?.let { firebaseUser ->
+                        // Crear un mapa de datos del usuario
+                        val userData = hashMapOf(
+                            "email" to firebaseUser.email,
+                            "uid" to firebaseUser.uid
+                        )
+                        // Guardar los datos del usuario en Firestore
+                        db.collection("users").document(firebaseUser.uid).set(userData)
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "User created and saved successfully.",
+                                    Toast.LENGTH_LONG,
+                                ).show()
+                                findNavController().navigate(R.id.action_SignUpFragment_to_HomeFragment)
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "User save failed.",
+                                    Toast.LENGTH_LONG,
+                                ).show()
+                            }
+                    }
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -71,6 +93,12 @@ class SignUpFragment : Fragment() {
                     ).show()
                 }
             }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Email and password must not be empty.",
+                Toast.LENGTH_LONG,
+            ).show()
         }
     }
 }

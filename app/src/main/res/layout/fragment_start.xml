@@ -52,10 +52,13 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/baseline_airplay_24"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corners"
+            android:src="@drawable/ic_claquetabl"
+            android:clipToOutline="true"
             app:layout_constraintBottom_toTopOf="@+id/tv_app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
