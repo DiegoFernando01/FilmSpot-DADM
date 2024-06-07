@@ -23,12 +23,11 @@ class StartFragment : Fragment() { // Fragmento inicial
         return binding.root
     }
 
-    override fun onViewCreated( // Operaciones sobre la vista después su creación
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+
+    override fun onViewCreated( view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         controllers()
+
     }
 
     private fun controllers() {

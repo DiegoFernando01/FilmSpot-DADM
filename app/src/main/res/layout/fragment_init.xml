@@ -31,7 +31,6 @@
             android:background="@drawable/rounded_corners"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_airplay_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
