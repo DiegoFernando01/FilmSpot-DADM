@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.filmspot.R
+import com.bumptech.glide.Glide
 import com.example.filmspot.databinding.FragmentInitBinding
 import com.example.filmspot.databinding.FragmentStartBinding
 
@@ -27,7 +28,11 @@ class InitFragment : Fragment() {
     override fun onViewCreated( // Operaciones sobre la vista después su creación
         view: View,
         savedInstanceState: Bundle?
+
     ) {
+        Glide.with(this)
+            .load("https://pymstatic.com/107354/conversions/sindrome-truman-social.jpg")
+            .into(binding.ivMovieImage)
         super.onViewCreated(view, savedInstanceState)
         controllers()
     }
