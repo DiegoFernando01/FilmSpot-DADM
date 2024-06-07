@@ -16,6 +16,11 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import com.example.filmspot.network.RetrofitClient
+import com.example.filmspot.model.MovieResponse
 
 
 class HomeFragment : Fragment() {
@@ -52,19 +57,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerViews() {
-        reviewsAdapter = ReviewsAdapter(listOf(/* sample data */))
-        watchListAdapter = WatchListAdapter(listOf(/* sample data */))
+        RetrofitClient.tmdbApi.searchMovies("your_api_key_here", "query_to_search")
+            .enqueue(object : Callback<MovieResponse> {
+                override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                    response.body()?.let {
+                        reviewsAdapter = ReviewsAdapter(it.results)
+                        binding.reviewsRecyclerView.adapter = reviewsAdapter
+                    }
+                }
 
-        binding.reviewsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = reviewsAdapter
-        }
-
-        binding.watchListRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = watchListAdapter
-        }
+                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                    Log.e("HomeFragment", "Error fetching movies", t)
+                }
+            })
     }
+
 
     private fun setupListeners() {
         binding.moreActivityText.setOnClickListener {
@@ -116,6 +123,26 @@ class HomeFragment : Fragment() {
                 Glide.with(this).load(it.urlImagenPerfil).into(binding.userProfileImage)
             }
         }
+
+        private fun loadFavoriteMovie() {
+            RetrofitClient.instance.getMovieDetails("8c29c89cbf5f32d08bc73d76d2f70bc7")
+                .enqueue(object : Callback<Movie> {
+                    override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                        if (response.isSuccessful) {
+                            response.body()?.let {
+                                binding.favoriteMovieTitle.text = it.title
+                                binding.favoriteMovieNameYear.text = "${it.title} (${it.releaseDate})"
+                                Glide.with(this@HomeFragment).load("https://image.tmdb.org/t/p/w500${it.posterPath}").into(binding.favoriteMovieImage)
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Movie>, t: Throwable) {
+                        Log.e("HomeFragment", "Error fetching movie details", t)
+                    }
+                })
+        }
+
     }
 
 

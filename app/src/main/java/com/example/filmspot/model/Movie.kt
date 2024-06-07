@@ -8,7 +8,7 @@ data class MovieResponse(
 )
 
 data class Movie(
-    val id: int,
+    val id: Int,
     val title: String,
     val description: String,
     @SerializedName("release_date") val releaseDate: String,
