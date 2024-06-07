@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentHomeBinding
 import com.example.filmspot.view.adapter.ReviewsAdapter
 import com.example.filmspot.view.adapter.WatchListAdapter
-import android.util.Log
-import com.bumptech.glide.Glide
+import androidx.navigation.fragment.findNavController
+import com.example.filmspot.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,31 +27,36 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-        // Inicializar los adapters
-        reviewsAdapter = ReviewsAdapter(listOf()) // Asumiendo que tienes un constructor que toma una lista
-        watchListAdapter = WatchListAdapter(listOf())
-
-        // Configurar RecyclerViews
-        view.findViewById<RecyclerView>(R.id.reviewsRecyclerView).adapter = reviewsAdapter
-        view.findViewById<RecyclerView>(R.id.watchListRecyclerView).adapter = watchListAdapter
-
-        return view
-
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inicializar los adapters
+        reviewsAdapter = ReviewsAdapter(listOf(/* sample data */))
+        watchListAdapter = WatchListAdapter(listOf(/* sample data */))
+
+        controllers()
         setupRecyclerViews()
         setupListeners()
     }
 
-    private fun setupRecyclerViews() {
-        reviewsAdapter = ReviewsAdapter(listOf(/* sample data */))
-        watchListAdapter = WatchListAdapter(listOf(/* sample data */))
+    private fun controllers() {
+        binding.moreActivityText.setOnClickListener() {
+            findNavController().navigate(R.id.action_HomeFragment_to_ReviewFragment)
+        }
+        binding.DetailsText.setOnClickListener() {
+            findNavController().navigate(R.id.action_HomeFragment_to_ExploreFragment)
+        }
+        binding.exploreButton.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_ExploreFragment)
+        }
+    }
 
+    private fun setupRecyclerViews() {
         binding.reviewsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = reviewsAdapter

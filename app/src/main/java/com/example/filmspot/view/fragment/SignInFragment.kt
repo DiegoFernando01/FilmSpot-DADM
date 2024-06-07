@@ -65,7 +65,7 @@ class SignInFragment : Fragment() {
                         "Successful authentication",
                         Toast.LENGTH_LONG,
                     ).show()
-                    //findNavController().navigate()
+                    findNavController().navigate(R.id.action_SignInFragment_to_HomeFragment)
                 } else {
                     Toast.makeText(
                         requireContext(),

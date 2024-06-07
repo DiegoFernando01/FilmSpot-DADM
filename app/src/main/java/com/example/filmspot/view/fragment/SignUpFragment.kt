@@ -75,7 +75,7 @@ class SignUpFragment : Fragment() {
                                     "User created and saved successfully.",
                                     Toast.LENGTH_LONG,
                                 ).show()
-                                // Agregar siguiente vista
+                                findNavController().navigate(R.id.action_SignUpFragment_to_HomeFragment)
                             }
                             .addOnFailureListener {
                                 Toast.makeText(

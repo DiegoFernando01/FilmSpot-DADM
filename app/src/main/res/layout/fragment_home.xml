@@ -1,260 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:padding="16dp">
+    android:fitsSystemWindows="true">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:padding="16dp">
 
-    <!-- Contenedor del perfil con bordes redondeados y color específico -->
-    <FrameLayout
-        android:id="@+id/profileContainer"
-        android:layout_width="127dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <!-- Contenedor del perfil con bordes redondeados y color específico -->
+        <FrameLayout
+            android:id="@+id/profileContainer"
+            android:layout_width="127dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Imagen de perfil del usuario -->
-        <ImageView
-            android:id="@+id/userProfileImage"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
-            android:layout_gravity="center"
-            android:background="@drawable/shape_profile_image"
-            android:contentDescription=""
-            android:scaleType="centerCrop"
-            tools:src="@tools:sample/avatars" />
+            <!-- Imagen de perfil del usuario -->
+            <ImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_profile_image"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
 
-        <!-- Nombre del usuario dentro del contenedor naranja -->
+            <!-- Nombre del usuario dentro del contenedor naranja -->
+            <TextView
+                android:id="@+id/userName"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </FrameLayout>
+
+        <!-- Contenedor de la Película Favorita -->
+        <FrameLayout
+            android:id="@+id/favoriteMovieContainer"
+            android:layout_width="203dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="22dp"
+            android:background="@drawable/rounded_container"
+            android:contentDescription="@string/descriptive_favoriteMovie"
+            app:layout_constraintStart_toEndOf="@id/profileContainer"
+            app:layout_constraintTop_toTopOf="@id/profileContainer">
+
+            <!-- Título 'Película Favorita' -->
+
+            <TextView
+                android:id="@+id/favoriteMovieTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7dp"
+                android:text="@string/favorite_movie"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/favoriteMovieImage"
+                android:layout_width="178dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/favorite_movie"
+                android:scaleType="fitCenter"
+                android:src="@drawable/baseline_airplay_24" />
+
+            <!-- Nombre y año de la película -->
+            <TextView
+                android:id="@+id/favoriteMovieNameYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp"
+                android:text="Nombre y año"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </FrameLayout>
+
         <TextView
-            android:id="@+id/userName"
-            style="@style/TextAppearance.AppCompat.Medium"
+            android:id="@+id/reviewsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:text=""
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
-    </FrameLayout>
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="180dp"
+            android:drawableStart="@drawable/ic_claqueta"
+            android:drawablePadding="8dp"
+            android:text="@string/reviews"
+            android:textColor="@color/filmspot_icons"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.034"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Contenedor de la Película Favorita -->
-    <FrameLayout
-        android:id="@+id/favoriteMovieContainer"
-        android:layout_width="203dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="22dp"
-        android:background="@drawable/rounded_container"
-        android:contentDescription="@string/descriptive_favoriteMovie"
-        app:layout_constraintStart_toEndOf="@id/profileContainer"
-        app:layout_constraintTop_toTopOf="@id/profileContainer"> <!-- Asegúrate que este drawable esté correctamente definido con color #FE522E y bordes de 20dp -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviewsRecyclerView"
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
 
-        <!-- Título 'Película Favorita' -->
+        <!-- More activity section with divider lines -->
 
         <TextView
-            android:id="@+id/favoriteMovieTitle"
+            android:id="@+id/moreActivityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="7dp"
-            android:text="@string/favorite_movie"
+            android:layout_marginStart="7dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:minWidth="22dp"
+            android:minHeight="22dp"
+            android:padding="13dp"
+            android:text="@string/more_activity"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reviewsRecyclerView" />
 
-        <ImageView
-            android:id="@+id/favoriteMovieImage"
-            android:layout_width="178dp"
-            android:layout_height="76dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:contentDescription="@string/favorite_movie"
-            android:scaleType="fitCenter"
-            android:src="@drawable/baseline_airplay_24" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView" />
 
-        <!-- Nombre y año de la película -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreActivityText" />
+
+        <!-- Watchlist -->
+
         <TextView
-            android:id="@+id/favoriteMovieNameYear"
+            android:id="@+id/watchListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="5dp"
-            android:text=""
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="144dp"
+            android:drawableStart="@drawable/ic_heart"
+            android:drawablePadding="8dp"
+            android:text="@string/watchlist"
+            android:textColor="@color/filmspot_icons"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/watchListRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/watchListTitle" />
+
+        <TextView
+            android:id="@+id/DetailsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="88dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:minWidth="22dp"
+            android:minHeight="22dp"
+            android:padding="13dp"
+            android:text="@string/details"
             android:textColor="@android:color/white"
-            android:textSize="12sp" />
-    </FrameLayout>
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchListTitle" />
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchListRecyclerView" />
 
-    <TextView
-        android:id="@+id/reviewsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="200dp"
-        android:drawableStart="@drawable/ic_claqueta"
-        android:drawablePadding="8dp"
-        android:text="@string/reviews"
-        android:textColor="@color/filmspot_icons"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Botón 'Let's Explore' -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DetailsText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reviewsRecyclerView"
-        android:layout_width="360dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
+        <Button
+            android:id="@+id/exploreButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/filmspot_background"
+            android:padding="12dp"
+            android:text="@string/lets_explore"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- More activity section with divider lines -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/moreActivityText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="88dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:minWidth="22dp"
-        android:minHeight="22dp"
-        android:padding="13dp"
-        android:text="@string/more_activity"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="-15dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-15dp"
-        android:layout_marginEnd="7dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/moreActivityText" />
-
-
-    <!-- Watchlist -->
-
-    <!-- More activity section with divider lines -->
-
-    <TextView
-        android:id="@+id/watchListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="156dp"
-        android:drawableStart="@drawable/ic_heart"
-        android:drawablePadding="8dp"
-        android:text="@string/watchlist"
-        android:textColor="@color/filmspot_icons"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviewsTitle" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/watchListRecyclerView"
-        android:layout_width="360dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/watchListTitle" />
-
-    <TextView
-        android:id="@+id/DetailsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="88dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:minWidth="22dp"
-        android:minHeight="22dp"
-        android:padding="13dp"
-        android:text="@string/details"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/watchListTitle" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/watchListRecyclerView" />
-
-    <!-- Botón 'Let's Explore' -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="7dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DetailsText" />
-
-    <Button
-        android:id="@+id/exploreButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/shape_button"
-        android:backgroundTint="@color/filmspot_icons"
-        android:padding="12dp"
-        android:text="@string/lets_explore"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
