@@ -1,21 +1,11 @@
 package com.example.filmspot.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.filmspot.R
 import com.example.filmspot.databinding.FragmentReviewBinding
-import com.example.filmspot.network.RetrofitClient
-import com.example.filmspot.model.Movie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import com.example.filmspot.view.adapter.MovieAdapter
-
 
 class ReviewFragment : Fragment() {
     private var _binding: FragmentReviewBinding? = null
@@ -36,23 +26,23 @@ class ReviewFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.watchListRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.watchListRecyclerView.adapter = MoviesAdapter(emptyList())  // Use the correct class name
+//        binding.watchListRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//        binding.watchListRecyclerView.adapter = MoviesAdapter(emptyList())  // Use the correct class name
     }
 
     private fun fetchRatedMovies() {
-        RetrofitClient.tmdbApi.searchMovies("your_api_key_here", "rated")
-            .enqueue(object : Callback<List<Movie>> {  // Correct the generic type if needed
-                override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
-                    if (response.isSuccessful) {
-                        binding.watchListRecyclerView.adapter = MoviesAdapter(response.body() ?: emptyList())  // Use the correct class name
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
-                    Log.e("ReviewFragment", "Error fetching rated movies", t)
-                }
-            })
+//        RetrofitClient.tmdbApi.searchMovies("your_api_key_here", "rated")
+//            .enqueue(object : Callback<List<Movie>> {  // Correct the generic type if needed
+//                override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
+//                    if (response.isSuccessful) {
+//                        binding.watchListRecyclerView.adapter = MoviesAdapter(response.body() ?: emptyList())  // Use the correct class name
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+//                    Log.e("ReviewFragment", "Error fetching rated movies", t)
+//                }
+//            })
     }
 
     override fun onDestroyView() {

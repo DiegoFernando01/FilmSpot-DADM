@@ -4,8 +4,6 @@ plugins {
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
     id("com.google.devtools.ksp")
-
-
 }
 
 android {
@@ -70,7 +68,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     // Dagger
-    implementation("com.google.dagger:dagger-compiler:2.51.1")
+    //implementation("com.google.dagger:dagger-compiler:2.51.1")
 
     // Kotlin
 
@@ -80,6 +78,8 @@ dependencies {
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+
+    implementation("com.google.code.gson:gson:2.8.8")
 }
 
 

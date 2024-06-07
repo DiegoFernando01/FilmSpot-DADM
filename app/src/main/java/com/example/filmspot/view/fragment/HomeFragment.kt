@@ -8,11 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmspot.R
-import com.example.filmspot.databinding.FragmentHomeBinding  // Asegúrate de usar el nombre correcto de tu archivo de binding
+import com.example.filmspot.databinding.FragmentHomeBinding
 import com.example.filmspot.view.adapter.ReviewsAdapter
 import com.example.filmspot.view.adapter.WatchListAdapter
-import android.widget.TextView
-import android.widget.ImageView
 import android.util.Log
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
@@ -94,31 +92,31 @@ class HomeFragment : Fragment() {
             super.onViewCreated(view, savedInstanceState)
 
             // Suponiendo que tienes un 'userId' disponible aquí
-            val userId = "someUserId"
+            //val userId = "someUserId"
 
-            db.collection("users").document(userId).get().addOnSuccessListener { document ->
-                if (document != null) {
-                    val usuario = document.toObject(Usuario::class.java)  // Asegúrate de tener una clase 'Usuario' que coincida con la estructura en Firestore
-                    updateUI(usuario)
-                } else {
-                    Log.d("Firestore", "No such document")
-                }
-            }.addOnFailureListener { exception ->
-                Log.d("Firestore", "get failed with ", exception)
-            }
+//            db.collection("users").document(userId).get().addOnSuccessListener { document ->
+//                if (document != null) {
+//                    val usuario = document.toObject(Usuario::class.java)  // Asegúrate de tener una clase 'Usuario' que coincida con la estructura en Firestore
+//                    updateUI(usuario)
+//                } else {
+//                    Log.d("Firestore", "No such document")
+//                }
+//            }.addOnFailureListener { exception ->
+//                Log.d("Firestore", "get failed with ", exception)
+//            }
         }
 
-        private fun updateUI(usuario: Usuario?) {
-            // Verificar si el usuario no es null
-            usuario?.let {
-                binding.userName.text = it.nombre
-                binding.favoriteMovieNameYear.text =
-                    "${it.peliculaFavorita.titulo} (${it.peliculaFavorita.año})"
-                Glide.with(this).load(it.peliculaFavorita.urlImagen)
-                    .into(binding.favoriteMovieImage)
-                Glide.with(this).load(it.urlImagenPerfil).into(binding.userProfileImage)
-            }
-        }
+//        private fun updateUI(usuario: Usuario?) {
+//            // Verificar si el usuario no es null
+//            usuario?.let {
+//                binding.userName.text = it.nombre
+//                binding.favoriteMovieNameYear.text =
+//                    "${it.peliculaFavorita.titulo} (${it.peliculaFavorita.año})"
+//                Glide.with(this).load(it.peliculaFavorita.urlImagen)
+//                    .into(binding.favoriteMovieImage)
+//                Glide.with(this).load(it.urlImagenPerfil).into(binding.userProfileImage)
+//            }
+//        }
     }
 
 }
